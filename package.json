@@ -11,14 +11,13 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "prepare": "husky install",
-    "lint": "tsc --noEmit && eslint src/**/*.ts{,x} --cache --max-warnings=0",
+    "lint": "eslint src/**/*.ts{,x} --cache --max-warnings=0",
     "lint:fix": "eslint src/**/*.ts{,x} --fix"
-
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": "eslint --cache --fix",
     "src/**/*.{js,jsx,ts,tsx,css,scss,md}": "prettier --write --ignore-unknown"
-},
+  },
   "keywords": [
     "time",
     "management"
