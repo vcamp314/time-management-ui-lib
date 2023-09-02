@@ -1,21 +1,24 @@
-import React from "react";
-import Button from "@mui/material/Button"
-import Box from "@mui/material/Box"
-import Grid from "@mui/material/Grid"
-import TimeDisplay from "../../ui/atoms/TimeDisplay"
+import React from 'react';
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import TimeDisplay from '../../ui/atoms/TimeDisplay';
 
-type AppProps = {
-
-  stageName: string
-  elapsedTime: number
-  toggleBtnVerbiage: "Start" | "Pause"
-  togglePause: () => void
-  resetSession: () => void
-
+interface AppProps {
+  stageName: string;
+  elapsedTime: number;
+  toggleBtnVerbiage: 'Start' | 'Pause';
+  togglePause: () => void;
+  resetSession: () => void;
 }
 
-const Presenter = ({ stageName, elapsedTime, toggleBtnVerbiage, togglePause, resetSession }: AppProps) => {
-  toggleBtnVerbiage
+const Presenter = ({
+  stageName,
+  elapsedTime,
+  toggleBtnVerbiage,
+  togglePause,
+  resetSession,
+}: AppProps): JSX.Element => {
   return (
     <>
       <Box
@@ -24,8 +27,7 @@ const Presenter = ({ stageName, elapsedTime, toggleBtnVerbiage, togglePause, res
         alignItems="center"
         minHeight="100vh"
       >
-        <Grid container spacing={2} >
-
+        <Grid container spacing={2}>
           <Grid item xs={12} sx={{ pt: 0 }}>
             <h2>{stageName}</h2>
           </Grid>
@@ -43,11 +45,10 @@ const Presenter = ({ stageName, elapsedTime, toggleBtnVerbiage, togglePause, res
               Reset
             </Button>
           </Grid>
-
         </Grid>
       </Box>
     </>
-  )
-}
+  );
+};
 
-export default Presenter
+export default Presenter;
