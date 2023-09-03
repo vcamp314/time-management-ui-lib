@@ -1,4 +1,4 @@
-import TimeDisplay from './TimeDisplay';
-export default TimeDisplay;
+import TimeDisplay from './TimeDisplay'
+export default TimeDisplay
 
-export * from '.';
+export * from '.'

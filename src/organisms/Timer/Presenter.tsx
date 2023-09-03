@@ -1,8 +1,8 @@
-import React from 'react';
-import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
-import TimeDisplay from '../../ui/atoms/TimeDisplay';
+import React from 'react'
+import Button from '@mui/material/Button'
+import Box from '@mui/material/Box'
+import Grid from '@mui/material/Grid'
+import TimeDisplay from '../../ui/atoms/TimeDisplay'
 
 interface AppProps {
   stageName: string;
@@ -48,7 +48,7 @@ const Presenter = ({
         </Grid>
       </Box>
     </>
-  );
-};
+  )
+}
 
-export default Presenter;
+export default Presenter

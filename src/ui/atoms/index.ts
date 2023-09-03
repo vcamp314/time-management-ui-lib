@@ -1,1 +1,1 @@
-export * from './TimeDisplay';
+export * from './TimeDisplay'
