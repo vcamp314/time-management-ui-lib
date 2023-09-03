@@ -1,22 +1,22 @@
-import React from 'react';
+import React from 'react'
 
 const TimeDisplay = ({ msTime }: { msTime: number }): JSX.Element => {
   const padTo2Digits = (timeUnit: number): string => {
-    return timeUnit <= 10 ? `0${timeUnit}` : `${timeUnit}`;
-  };
+    return timeUnit <= 10 ? `0${timeUnit}` : `${timeUnit}`
+  }
 
-  let seconds: number = Math.floor(msTime / 1000);
-  let minutes: number = Math.floor(seconds / 60);
-  const hours: number = Math.floor(minutes / 60);
+  let seconds: number = Math.floor(msTime / 1000)
+  let minutes: number = Math.floor(seconds / 60)
+  const hours: number = Math.floor(minutes / 60)
 
-  seconds = seconds % 60;
-  minutes = minutes % 60;
+  seconds = seconds % 60
+  minutes = minutes % 60
 
   return (
     <h1>{`${padTo2Digits(hours)}:${padTo2Digits(minutes)}:${padTo2Digits(
       seconds,
     )}`}</h1>
-  );
-};
+  )
+}
 
-export default TimeDisplay;
+export default TimeDisplay
