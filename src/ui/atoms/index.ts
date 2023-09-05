@@ -1,1 +1,1 @@
-export * from './TimeDisplay'
+export { default as TimeDisplay } from './TimeDisplay'
