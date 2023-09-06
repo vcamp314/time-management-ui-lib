@@ -38,4 +38,9 @@ describe('TimeDisplay', () => {
 
     expect(screen.getByText('02:02:20')).toBeTruthy()
   })
+  it('fails', () => {
+    render(<TimeDisplay msTime={TWO_HOURS + TWO_MINUTES + TWENTY_SECONDS} />)
+
+    expect(screen.getByText('00:02:20')).toBeTruthy()
+  })
 })
