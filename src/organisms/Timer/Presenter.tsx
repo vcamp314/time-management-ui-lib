@@ -5,7 +5,7 @@ import Grid from '@mui/material/Grid'
 import TimeDisplay from '../../ui/atoms/TimeDisplay'
 
 interface AppProps {
-  stageName: string;
+  name: string;
   elapsedTime: number;
   toggleBtnVerbiage: 'Start' | 'Pause';
   togglePause: () => void;
@@ -13,7 +13,7 @@ interface AppProps {
 }
 
 const Presenter = ({
-  stageName,
+  name,
   elapsedTime,
   toggleBtnVerbiage,
   togglePause,
@@ -29,7 +29,7 @@ const Presenter = ({
       >
         <Grid container spacing={2}>
           <Grid item xs={12} sx={{ pt: 0 }}>
-            <h2>{stageName}</h2>
+            <h2>{name}</h2>
           </Grid>
 
           <Grid item xs={12}>

@@ -14,4 +14,9 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>;
 
-export const Basic: Story = {}
+export const Basic: Story = {
+  args: {
+    duration: 60 * 1000,
+    name: 'test timer name',
+  },
+}
