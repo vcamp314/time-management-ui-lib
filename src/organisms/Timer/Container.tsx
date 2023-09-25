@@ -1,78 +1,73 @@
 import React, { useState, useEffect } from 'react'
 import Presenter from './Presenter'
 
-// temporary mock data:
-const sessionStages = [
-  {
-    stageName: 'focused work',
-    stageDuration: 40 * 60 * 1000,
-  },
-  {
-    stageName: 'exercise break',
-    stageDuration: 10 * 60 * 1000,
-  },
-  {
-    stageName: 'cleaning/admin tasks',
-    stageDuration: 10 * 60 * 1000,
-  },
-]
-
 const alertAudioPath =
   'https://raw.githubusercontent.com/vcamp314/time-management-tools/gh-pages/mixkit-scanning-sci-fi-alarm-905.wav'
 
-const Container = (): JSX.Element => {
-  const [currentStageIndex, setCurrentStageIndex] = useState<number>(0)
-  const [elapsedTime, setElapsedTime] = useState<number>(
-    sessionStages[currentStageIndex].stageDuration,
-  )
+export interface AppProps {
+  duration: number;
+  name: string;
+  onFinish?: () => void;
+  onPause?: (remainingTime: number) => void;
+  onReset?: (remainingTime: number) => void;
+}
+
+const Container = ({
+  duration,
+  name,
+  onFinish,
+  onPause,
+  onReset,
+}: AppProps): JSX.Element => {
+  const [remainingTime, setRemainingTime] = useState<number>(duration)
   const [isStarted, setIsStarted] = useState<boolean>(false)
 
   const audio = new Audio(alertAudioPath)
-  let timeoutId = 0
+  let intervalId = 0
 
   useEffect(() => {
-    if (isStarted && elapsedTime > 0) {
-      timeoutId = window.setTimeout(() => {
-        setElapsedTime(elapsedTime - 1000)
+    if (isStarted) {
+      intervalId = window.setInterval(() => {
+        setRemainingTime((curr) => curr - 1000)
       }, 1000)
     }
-    if (elapsedTime <= 0) {
+    return () => {
+      clearInterval(intervalId)
+    }
+  }, [isStarted])
+
+  useEffect(() => {
+    if (remainingTime <= 0) {
+      console.log('finish timer')
+      onFinish?.()
+      setIsStarted(false)
+      setRemainingTime(0)
       // todo: verify the proper way to handle the play() promise
-      audio.play().then(
+      audio.play()?.then(
         () => {},
         () => {},
       )
-      startNextStage()
     }
-  }, [elapsedTime, isStarted])
+  }, [remainingTime])
 
   const resetSession = (): void => {
+    onReset?.(remainingTime)
     setIsStarted(false)
-    clearTimeout(timeoutId)
-    setCurrentStageIndex(0)
-    setElapsedTime(sessionStages[0].stageDuration)
-  }
-
-  const startNextStage = (): void => {
-    if (currentStageIndex >= sessionStages.length - 1) return
-
-    setElapsedTime(sessionStages[currentStageIndex + 1].stageDuration)
-    setCurrentStageIndex(currentStageIndex + 1)
+    clearInterval(intervalId)
+    setRemainingTime(duration)
   }
 
   //   todo: refactor to improve UX
   const togglePause = (): void => {
-    console.log('toggled pause')
-    console.log('isStarted before: ', isStarted)
+    onPause?.(remainingTime)
     setIsStarted(!isStarted)
-    console.log('isStarted after: ', isStarted)
   }
 
   return (
     <>
       <Presenter
-        stageName={sessionStages[currentStageIndex].stageName}
-        elapsedTime={elapsedTime}
+        name={name}
+        elapsedTime={remainingTime}
         toggleBtnVerbiage={isStarted ? 'Pause' : 'Start'}
         togglePause={togglePause}
         resetSession={resetSession}
