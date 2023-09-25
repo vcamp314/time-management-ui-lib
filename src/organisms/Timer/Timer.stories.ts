@@ -17,6 +17,6 @@ type Story = StoryObj<typeof meta>;
 export const Basic: Story = {
   args: {
     duration: 60 * 1000,
-    name: 'test stage name',
+    name: 'test timer name',
   },
 }
