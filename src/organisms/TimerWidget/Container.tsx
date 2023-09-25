@@ -2,8 +2,6 @@ import React, { useState } from 'react'
 import Presenter from './Presenter'
 
 // TODO add features for creating timers
-// TODO update mock data before committing
-// temporary mock data:
 
 export interface Stage {
   id: number;
