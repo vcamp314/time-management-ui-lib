@@ -1,5 +1,5 @@
 {
-  "name": "time-management-tools-ui",
+  "name": "time-management-ui-lib",
   "version": "1.0.0",
   "description": "ui library for time management tools",
   "main": "dist/cjs/index.js",
