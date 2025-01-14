@@ -20,23 +20,18 @@ const Presenter = ({
   resetSession,
 }: AppProps): JSX.Element => {
   return (
-    <>
-      <Box
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        minHeight="100vh"
-      >
-        <Grid container spacing={2}>
-          <Grid item xs={12} sx={{ pt: 0 }}>
-            <h2>{name}</h2>
-          </Grid>
+    <Box display="flex" flexDirection="column" alignItems="center" width="100%">
+      <Grid container spacing={2} sx={{ textAlign: 'center' }}>
+        <Grid item xs={12}>
+          <h2>{name}</h2>
+        </Grid>
 
-          <Grid item xs={12}>
-            <TimeDisplay msTime={elapsedTime} />
-          </Grid>
+        <Grid item xs={12}>
+          <TimeDisplay msTime={elapsedTime} />
+        </Grid>
 
-          <Grid item xs={12}>
+        <Grid item xs={12}>
+          <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center' }}>
             <Button variant="contained" onClick={togglePause}>
               {toggleBtnVerbiage}
             </Button>
@@ -44,10 +39,10 @@ const Presenter = ({
             <Button variant="text" onClick={resetSession}>
               Reset
             </Button>
-          </Grid>
+          </Box>
         </Grid>
-      </Box>
-    </>
+      </Grid>
+    </Box>
   )
 }
 
