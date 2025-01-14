@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Presenter from './Presenter'
+import { Box } from '@mui/material'
 
 const alertAudioPath =
   'https://raw.githubusercontent.com/vcamp314/time-management-tools/gh-pages/mixkit-scanning-sci-fi-alarm-905.wav'
@@ -10,6 +11,7 @@ export interface AppProps {
   onFinish?: () => void;
   onPause?: (remainingTime: number) => void;
   onReset?: (remainingTime: number) => void;
+  containerStyle?: React.CSSProperties;
 }
 
 const Container = ({
@@ -18,6 +20,7 @@ const Container = ({
   onFinish,
   onPause,
   onReset,
+  containerStyle = {},
 }: AppProps): JSX.Element => {
   const [remainingTime, setRemainingTime] = useState<number>(duration)
   const [isStarted, setIsStarted] = useState<boolean>(false)
@@ -64,7 +67,7 @@ const Container = ({
   }
 
   return (
-    <>
+    <Box sx={{ width: '100%', ...containerStyle }}>
       <Presenter
         name={name}
         elapsedTime={remainingTime}
@@ -72,7 +75,7 @@ const Container = ({
         togglePause={togglePause}
         resetSession={resetSession}
       />
-    </>
+    </Box>
   )
 }
 
