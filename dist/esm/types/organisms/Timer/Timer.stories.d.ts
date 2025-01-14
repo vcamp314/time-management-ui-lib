@@ -2,7 +2,7 @@
 import type { StoryObj } from '@storybook/react';
 declare const meta: {
     title: string;
-    component: ({ duration, name, onFinish, onPause, onReset, }: import("./Container").AppProps) => JSX.Element;
+    component: ({ duration, name, onFinish, onPause, onReset, containerStyle, }: import("./Container").AppProps) => JSX.Element;
     parameters: {
         layout: string;
     };

@@ -1,6 +1,6 @@
 {
   "name": "time-management-ui-lib",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "ui library for time management tools",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",

@@ -1,11 +1,14 @@
+import React from 'react';
+
 interface AppProps$1 {
     duration: number;
     name: string;
     onFinish?: () => void;
     onPause?: (remainingTime: number) => void;
     onReset?: (remainingTime: number) => void;
+    containerStyle?: React.CSSProperties;
 }
-declare const Container$1: ({ duration, name, onFinish, onPause, onReset, }: AppProps$1) => JSX.Element;
+declare const Container$1: ({ duration, name, onFinish, onPause, onReset, containerStyle, }: AppProps$1) => JSX.Element;
 
 interface Stage {
     id: number;
